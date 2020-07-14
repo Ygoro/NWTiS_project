@@ -1,0 +1,585 @@
+{
+	"info": {
+		"_postman_id": "1d724197-9182-494c-b574-cd51f89b9f3b",
+		"name": "projekt_aplikacija_2_SOAP_test",
+		"description": "Sadrži datoteke za testiranje drugog zadatka aplikacije 2 projekta kolegija NWTiS.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Pretraži aerodrome prema nazivu (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeNaziv>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <naziv>Ca%</naziv>\n        </ns2:dajAerodromeNaziv>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "1. Pretraži aerodrome prema nazivu (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeNaziv>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <naziv>Capapapapa</naziv>\n        </ns2:dajAerodromeNaziv>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Pretraži aerodrome prema državi (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeDrzava>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <kodDrzave>HR</kodDrzave>\n        </ns2:dajAerodromeDrzava>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "2. Pretraži aerodrome prema državi (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeDrzava>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <kodDrzave>HA</kodDrzave>\n        </ns2:dajAerodromeDrzava>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Pretraži aerodrome korisnika (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeKorisnika>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n        </ns2:dajAerodromeKorisnika>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "3. Pretraži aerodrome korisnika (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeKorisnika>\n            <korime>pero</korime>\n            <lozinka>pero</lozinka>\n        </ns2:dajAerodromeKorisnika>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Pretraži letove aviona aerodroma u razdoblju (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajPoletjeleAvioneAerodroma>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <icao>CYUL</icao>\n            <vrijemeOd>1577882896</vrijemeOd>\n            <vrijemeDo>1577969296</vrijemeDo>\n        </ns2:dajPoletjeleAvioneAerodroma>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "4. Pretraži letove aviona aerodroma u razdoblju (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajPoletjeleAvioneAerodroma>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <icao>CYUL</icao>\n            <vrijemeOd>1577882896</vrijemeOd>\n            <vrijemeDo>1577882896</vrijemeDo>\n        </ns2:dajPoletjeleAvioneAerodroma>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Pretraži letove aviona u razdoblju (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajLetoveAviona>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <icao24>c03cf4</icao24>\n            <vrijemeOd>1577882896</vrijemeOd>\n            <vrijemeDo>1577969296</vrijemeDo>\n        </ns2:dajLetoveAviona>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "5. Pretraži letove aviona u razdoblju (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajLetoveAviona>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <icao24>c03cf5</icao24>\n            <vrijemeOd>1577882896</vrijemeOd>\n            <vrijemeDo>1577969296</vrijemeDo>\n        </ns2:dajLetoveAviona>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "6. Pretraži udaljenost između aerodroma (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajUdaljenostAerodroma>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <prviIcao>CYUL</prviIcao>\n            <drugiIcao>EDDH</drugiIcao>\n        </ns2:dajUdaljenostAerodroma>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "6. Pretraži udaljenost između aerodroma (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajUdaljenostAerodroma>\n            <korime>pero</korime>\n            <lozinka>12345</lozinka>\n            <prviIcao>CYUL</prviIcao>\n            <drugiIcao>EDDH</drugiIcao>\n        </ns2:dajUdaljenostAerodroma>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "7. Pretraži aerodrome korisnika udaljene unutar granica od unesenog (ispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeKorisnikaUnutarGranica>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <icao>CYUL</icao>\n            <donjaGranica>200</donjaGranica>\n            <gornjaGranica>2000</gornjaGranica>\n        </ns2:dajAerodromeKorisnikaUnutarGranica>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		},
+		{
+			"name": "7. Pretraži aerodrome korisnika udaljene unutar granica od unesenog (neispravno)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <SOAP-ENV:Header/>\n    <S:Body xmlns:ns2=\"http://serveri.ws.ikosmerl.nwtis.foi.org/\">\n        <ns2:dajAerodromeKorisnikaUnutarGranica>\n            <korime>pero</korime>\n            <lozinka>123456</lozinka>\n            <icao>CYUL</icao>\n            <donjaGranica>2000</donjaGranica>\n            <gornjaGranica>200</gornjaGranica>\n        </ns2:dajAerodromeKorisnikaUnutarGranica>\n    </S:Body>\n</S:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_2_web_modul/Aplikacija2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_2_web_modul",
+						"Aplikacija2"
+					]
+				},
+				"description": "Pretraga aerodroma prema nazivu"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

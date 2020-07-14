@@ -1,0 +1,997 @@
+{
+	"info": {
+		"_postman_id": "18293060-a3ed-4346-a58c-ab617a4fe33d",
+		"name": "projekt_aplikacija_3_REST_test",
+		"description": "Testna datoteka RESTful web servisa treće aplikacije",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. GET metoda - osnovna adresa",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. GET metoda - osnovna adresa (neautoriziran korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. POST metoda - osnovna adresa",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"icao\": \"CYUL\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. POST metoda - osnovna adresa (nepostojeci aerodrom)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"type": "text",
+						"value": "pero"
+					},
+					{
+						"key": "lozinka",
+						"type": "text",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"icao\": \"ABCD\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. POST metoda - osnovna adresa (neautoriziran korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"icao\": \"CYUL\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. GET metoda - putanja \"{icao}\" (aerodrom: CYUL)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/CYUL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"CYUL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. GET metoda - putanja \"{icao}\" (nepostojeci aerodrom)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/ABCD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"ABCD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. GET metoda - putanja \"{icao}\" (neautoriziran korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/CYUL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"CYUL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. DELETE metoda - putanja \"{icao}\"",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/CYUL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"CYUL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. DELETE metoda - putanja \"{icao}\" (aerodrom s letovima)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "ivo",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/UUEE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"UUEE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. DELETE metoda - putanja \"{icao}\" (nije pridružen korisniku)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "mato",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/RJTT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"RJTT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. DELETE metoda - putanja \"{icao}\" (neautorizirani korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/CYUL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"CYUL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. DELETE metoda - putanja \"{icao}/avioni\"",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/EBBR/avioni",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"EBBR",
+						"avioni"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. DELETE metoda - putanja \"{icao}/avioni\" (nije pridružen korisniku)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "mato",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/RJTT/avioni",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"RJTT",
+						"avioni"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. DELETE metoda - putanja \"{icao}/avioni\" (neautorizirani korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/CYUL/avioni",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"CYUL",
+						"avioni"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. GET metoda - putanja \"/svi\" (naziv: Z%)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/svi?naziv=M%",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"svi"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "M%"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. GET metoda - putanja \"/svi\" (drzava: GB)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/svi?drzava=GB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"svi"
+					],
+					"query": [
+						{
+							"key": "drzava",
+							"value": "GB"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. GET metoda - putanja \"/svi\" (naziv: %)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/svi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"svi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. GET metoda - putanja \"/svi\" (neautorizirani korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/svi?naziv=A%",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"svi"
+					],
+					"query": [
+						{
+							"key": "naziv",
+							"value": "A%"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. POST metoda - putanja \"/komande\"",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "123456",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/komande?komanda=KORISNIK pero; LOZINKA 123456;&vrijeme=22.06.2020 19:19:19.191",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"komande"
+					],
+					"query": [
+						{
+							"key": "komanda",
+							"value": "KORISNIK pero; LOZINKA 123456;"
+						},
+						{
+							"key": "vrijeme",
+							"value": "22.06.2020 19:19:19.191"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. POST metoda - putanja \"/komande\" (neautorizirani korisnik)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "korisnik",
+						"value": "pero",
+						"type": "text"
+					},
+					{
+						"key": "lozinka",
+						"value": "12345",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8084/ikosmerl_aplikacija_3_1/webresources/aerodromi/komande",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"ikosmerl_aplikacija_3_1",
+						"webresources",
+						"aerodromi",
+						"komande"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
