@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{lokalizacija.jezik}">
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet library="css" name="default.css"/>
+            <h:outputStylesheet library="css" name="cssLayout.css"/>
+            <h:outputStylesheet library="css" name="dizajn.css"/>
+            <title><ui:insert name="naslov">Naslov</ui:insert></title>
+        </h:head>
+
+        <h:body>
+            <hr/>
+            <h:form style="float: left">
+                <p:menu>
+                    <p:menuitem value="Pogled 1" action="pogled1"/>
+                    <p:menuitem value="Pogled 2" action="pogled2" rendered="#{pogled1.prijavljen}"/>
+                    <p:menuitem value="Pogled 3" action="pogled3" rendered="#{pogled1.prijavljen}"/>
+                    <p:menuitem value="Pogled 4" action="pogled4" rendered="#{pogled1.prijavljen}"/>
+                    <p:menuitem value="Pogled 5" action="pogled5" rendered="#{pogled1.prijavljen}"/>
+                </p:menu>
+            </h:form>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+            <hr/>
+            <div id="bottom">
+                Igor Košmerl - NWTiS &copy; 2020.
+                <h:form>
+                    <p:outputLabel rendered="#{pogled1.prijavljen}" style="float: left">
+                        Prijavljeni korisnik: #{pogled1.korisnik}
+                    </p:outputLabel><br/><br/>
+                    <p:commandButton rendered="#{pogled1.prijavljen}" value="Odjavi se" 
+                                     action="#{pogled1.odjaviKorisnika()}" style="float: left" ajax="false"/>
+                </h:form>
+            </div>
+        </h:body>
+    </f:view>
+</html>

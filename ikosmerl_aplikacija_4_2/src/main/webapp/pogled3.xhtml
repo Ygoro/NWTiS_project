@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 3</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 4 - Pogled 3</h1>
+        <br/>
+        <h4 id="JMSBrojAerodroma" style="text-align: center; margin: 0 auto;"></h4>
+        <br/>
+        <h4 id="JMSDatumOsjvjezavanja" style="text-align: center; margin: 0 auto;"></h4>
+        <br/>
+        <h:form id="formaPogled3" class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">Aerodromi korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <p:dataTable id="popisAerodromaKorisnika" value="#{pogled3.aerodromiKorisnika}" var="aerodrom" 
+                         rows="5" paginator="true" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                         {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                         style="margin: 10px 20px">
+                <p:column>
+                    <f:facet name="header">IDENT</f:facet>#{aerodrom.ident}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Naziv</f:facet>#{aerodrom.name}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Država</f:facet>#{aerodrom.isoCountry}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Broj pratitelja</f:facet>#{aerodrom.myairportsList.size()}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Preuzeti podaci (dani)</f:facet>#{aerodrom.myairportslogList.size()}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Broj preuzetih letova</f:facet>#{aerodrom.airplanesList.size()}
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Prikaži geo meteo podatke" 
+                                     action="#{pogled3.preuzmiGeoMeteoPodatke(aerodrom)}" 
+                                     update=":formaPogled3:geoMeteoPodaci"/>
+                </p:column>
+            </p:dataTable>
+            <br/><br/>
+            <h2 style="text-align: center; margin: 0 auto;">Geografski i meteorološki podaci odabranog aerodroma</h2>
+            <br/>
+            <p:outputPanel id="geoMeteoPodaci" style="text-align: center">
+                <p:outputLabel class="labela" value="Geografska širina: #{pogled3.gpsSirina}" style="font-weight: bold"/>
+                &nbsp;&nbsp;&nbsp;
+                <p:outputLabel class="labela" value="Geografska dužina: #{pogled3.gpsDuzina}" style="font-weight: bold"/>
+                <br/><br/>
+                <p:outputLabel class="labela" value="Temperatura: #{pogled3.temperatura}" style="font-weight: bold"/>
+                &nbsp;&nbsp;&nbsp;
+                <p:outputLabel class="labela" value="Vlaga: #{pogled3.vlaga}" style="font-weight: bold"/>
+            </p:outputPanel>
+            <br/><br/>
+            <h2 style="text-align: center; margin: 0 auto;">Pretraživanje svih aerodroma i dodavanje korisniku</h2>
+            <br/>
+            <p:outputLabel class="labela" for="nazivAerodromaSviAerodromi" value="Pretraži sve aerodrome prema nazivu: " style="font-weight: bold"/>&nbsp;
+            <p:inputText class="labelaInput" id="nazivAerodromaSviAerodromi" value="#{pogled3.nazivAerodromaSviAerodromi}"/>&nbsp;
+            <p:commandButton value="Pretrazi aerodrome" 
+                             action="#{pogled3.dajAerodromeSvihKorisnika()}" 
+                             update=":formaPogled3:popisSvihAerodroma"/>
+            <br/><br/>
+            <p:selectOneMenu id="popisSvihAerodroma" value="#{pogled3.odabraniAerodrom}"
+                             label="Pretraženi aerodromi">
+                <f:selectItems id="popis" value="#{pogled3.sviAerodromi}" var="a" 
+                               itemValue="#{a.ident}" itemLabel="#{a.ident} | #{a.name}"/>
+            </p:selectOneMenu>
+            <br/><br/>
+            <p:commandButton value="Dodaj aerodrom korisniku" 
+                             action="#{pogled3.dodajAerodromKorisniku()}" 
+                             update=":formaPogled3:popisAerodromaKorisnika"/>
+        </h:form>
+        <script type="text/javascript">
+            var wsocket;
+            function connect() {
+                wsocket = new WebSocket("ws://localhost:8084/ikosmerl_aplikacija_2_web_modul/aerodromi");
+                wsocket.onmessage = onMessage;
+            }
+            function onMessage(evt) {
+                var podaci = evt.data;
+                JMSBrojAerodroma = podaci.split("; ")[0];
+                JMSDatumOsjvjezavanja = podaci.split("; ")[1];
+                document.getElementById("JMSBrojAerodroma").innerHTML = "Ukupan broj aerodroma za koje se preuzimaju podaci o letovima: " + JMSBrojAerodroma;
+                document.getElementById("JMSDatumOsjvjezavanja").innerHTML = "Vrijeme zadnjeg osvježavanja podataka o broju aerodroma: " + JMSDatumOsjvjezavanja;
+            }
+            window.addEventListener("load", connect, false);
+        </script>
+    </ui:define>
+</ui:composition>

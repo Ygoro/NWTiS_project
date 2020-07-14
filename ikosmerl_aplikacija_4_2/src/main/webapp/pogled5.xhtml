@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 5</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 4 - Pogled 5</h1>
+        <br/>
+        <h:form id="formaPogled5" class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">Brisanje praćenja i brisnaje letova aviona aerodroma</h2>
+            <br/>
+            <p:selectOneMenu id="popisSvihAerodroma" value="#{pogled5.odabraniAerodrom}">
+                <f:selectItems id="popis" value="#{pogled5.aerodromiKorisnika}" var="a" 
+                               itemValue="#{a.icao}" itemLabel="#{a.icao} | #{a.naziv}"/>
+            </p:selectOneMenu>
+            <br/><br/>
+            <p:commandButton value="Obriši praćenje aerodroma" 
+                             action="#{pogled5.obrisiPracenjeAerodroma()}" 
+                             update=":formaPogled5:popisSvihAerodroma :formaPogled5:povratnaInfo"/>
+            <br/><br/>
+            <p:commandButton value="Obriši letove aviona aerodroma" 
+                             action="#{pogled5.obrisiLetoveAvionaAerodroma()}" 
+                             update=":formaPogled5:popisSvihAerodroma :formaPogled5:povratnaInfo"/>
+            <br/><br/>
+            <p:outputLabel id="povratnaInfo" class="labela" 
+                           value="Povratna informacija nakon brisanja: #{pogled5.povratnaInformacija}" 
+                           style="font-weight: bold"/>
+            <br/><br/>
+            <h2 style="text-align: center; margin: 0 auto;">Unos minimalne i maksimalne udaljenosti od odabranog aerodroma</h2>
+            <br/>
+            <p:outputLabel class="labela" for="inputGranicaMin" 
+                           value="Donja (min) granica udaljenosti (u km): " style="font-weight: bold"/>&nbsp;
+            <p:inputText class="labelaInput" id="inputGranicaMin" value="#{pogled5.unesenaGranicaMin}"/>&nbsp;
+            <br/><br/>
+            <p:outputLabel class="labela" for="inputGranicaMaks" 
+                           value="Gornja (maks) granica udaljenosti (u km): " style="font-weight: bold"/>&nbsp;
+            <p:inputText class="labelaInput" id="inputGranicaMaks" value="#{pogled5.unesenaGranicaMaks}"/>&nbsp;
+            <br/><br/>
+            <p:commandButton value="Prikaži aerodrome" 
+                             action="#{pogled5.dajAerodromeUnutarGranica()}" 
+                             update=":formaPogled5:selectCheckAerodromi"/>
+            <br/><br/>
+            <h2 style="text-align: center; margin: 0 auto;">Aerodromi unutar unesene udaljenosti od odabranog aerodroma</h2>
+            <br/>
+            <p:selectCheckboxMenu id="selectCheckAerodromi" value="#{pogled5.odabraniAerodromiUdaljenost}" 
+                                  label="Aerodromi unutar granica udaljenosti">
+                <f:selectItems id="itemsUdaljenostAerodromi" value="#{pogled5.aerodromiUnutarGranica}" var="aug"
+                               itemValue="#{aug.icao}" itemLabel="#{aug.icao} | #{aug.naziv}"/>
+            </p:selectCheckboxMenu>
+            <br/><br/>
+            <p:commandButton value="Dohvati udaljenost između aerodroma" 
+                             action="#{pogled5.dajUdaljenostIzmeduAerodroma()}" 
+                             update=":formaPogled5:udaljenostLabela"/>
+            <br/><br/>
+            <p:outputLabel id="udaljenostLabela" class="labela" 
+                           value="Odabrani aerodromi udaljeni su #{pogled5.udaljenostAerodromaString}"
+                           style="font-weight: bold"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

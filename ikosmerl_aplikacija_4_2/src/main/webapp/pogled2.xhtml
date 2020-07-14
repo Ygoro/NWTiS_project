@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 2</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 4 - Pogled 2</h1>
+        <br/>
+        <h:form id="podaciPrvogReda" class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">JMS poruke prvog reda korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <div>
+                <p:dataTable value="#{pogled2.popuniListuPorukaPrvogReda()}" var="porukaPrvogReda" 
+                             rows="5" paginator="true" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                             style="margin: 10px 20px">
+                    <p:column>
+                        <f:facet name="header">Korisnik</f:facet>#{porukaPrvogReda.korisnik}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Aerodrom</f:facet>#{porukaPrvogReda.aerodrom}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Vrijeme zapisa</f:facet>#{porukaPrvogReda.vrijeme}
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+        <br/>
+        <h:form id="podaciDrugogReda" class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">JMS poruke drugog reda korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <div>
+                <p:dataTable value="#{pogled2.popuniListuPorukaDrugogReda()}" var="porukaDrugogReda" 
+                             rows="5" paginator="true" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                             style="margin: 10px 20px">
+                    <p:column>
+                        <f:facet name="header">Komanda</f:facet>#{porukaDrugogReda.komanda}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Vrijeme slanja</f:facet>#{porukaDrugogReda.vrijemeSlanja}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Vrijeme prijema</f:facet>#{porukaDrugogReda.vrijemePrijema}
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+        <br/>
+        <h:form>
+            <p:outputLabel value="Obriši sve poruke prvog i drugog reda poruka: "/>
+            <p:commandButton value="Obriši" action="#{pogled2.obrisiJMSPoruke()}" update=":podaciPrvogReda :podaciDrugogReda"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

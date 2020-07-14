@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 4</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 4 - Pogled 4</h1>
+        <br/>
+        <h:form id="formaPogled4" class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">Unos vremenskog intervala</h2>
+            <br/>
+            <p:outputLabel class="labela" for="inputVrijemeOd" value="Početno vrijeme intervala: " style="font-weight: bold"/>&nbsp;
+            <p:inputText class="labelaInput" id="inputVrijemeOd" value="#{pogled4.unesenoVrijemeOd}" placeholder="dd.MM.gggg HH:mm"/>&nbsp;
+            <br/><br/>
+            <p:outputLabel class="labela" for="inputVrijemeDo" value="Krajnje vrijeme intervala: " style="font-weight: bold"/>&nbsp;
+            <p:inputText class="labelaInput" id="inputVrijemeDo" value="#{pogled4.unesenoVrijemeDo}" placeholder="dd.MM.gggg HH:mm"/>&nbsp;
+            <br/><br/>
+            <h2 style="text-align: center; margin: 0 auto;">Prikaz aerodroma korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <p:dataTable id="podaciAerodromaKorisnika" value="#{pogled4.dajAerodromeKorisnika()}" var="aerodromKorisnika" 
+                         rows="5" paginator="true" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                         {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                         style="margin: 10px 20px">
+                <p:column>
+                    <f:facet name="header">IDENT</f:facet>#{aerodromKorisnika.icao}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Naziv</f:facet>#{aerodromKorisnika.naziv}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Država</f:facet>#{aerodromKorisnika.drzava}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Lokacija</f:facet>#{aerodromKorisnika.lokacija.longitude}, #{aerodromKorisnika.lokacija.latitude}
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Poletjeli avioni u intervalu" 
+                                     action="#{pogled4.dajPoletjeleAvioneAerodroma(aerodromKorisnika.icao)}" 
+                                     update=":formaPogled4:podaciAvionaAerodroma"/>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            <h2 style="text-align: center; margin: 0 auto;">Prikaz poletjelih aviona aerodroma korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <p:dataTable id="podaciAvionaAerodroma" value="#{pogled4.poletjeliAvioni}" var="avionAerodroma" 
+                         rows="5" paginator="true" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                         {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                         style="margin: 10px 20px">
+                <p:column>
+                    <f:facet name="header">ICAO24</f:facet>#{avionAerodroma.icao24}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Pozivni znak</f:facet>#{avionAerodroma.callsign}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Prvo vrijeme</f:facet>#{avionAerodroma.firstSeen}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Zadnje vrijeme</f:facet>#{avionAerodroma.lastSeen}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Polazišni aerodrom</f:facet>#{avionAerodroma.estDepartureAirport}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Odredišni aerodrom</f:facet>#{avionAerodroma.estArrivalAirport}
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Letovi aviona u intervalu" 
+                                     action="#{pogled4.dajLetoveAviona(avionAerodroma.icao24)}" 
+                                     update=":formaPogled4:podaciLetovaAviona"/>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            <h2 style="text-align: center; margin: 0 auto;">Prikaz letova aviona korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <p:dataTable id="podaciLetovaAviona" value="#{pogled4.letoviAviona}" var="letAviona" 
+                         rows="5" paginator="true" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                         {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                         style="margin: 10px 20px">
+                <p:column>
+                    <f:facet name="header">ICAO24</f:facet>#{letAviona.icao24}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Pozivni znak</f:facet>#{letAviona.callsign}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Prvo vrijeme</f:facet>#{letAviona.firstSeen}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Zadnje vrijeme</f:facet>#{letAviona.lastSeen}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Polazišni aerodrom</f:facet>#{letAviona.estDepartureAirport}
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Odredišni aerodrom</f:facet>#{letAviona.estArrivalAirport}
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
