@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 1</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 3 - Pogled 1</h1>
+        <br/>
+        <h:form id="prijavaKorisnika" class="obrazacMali" rendered="#{not(pogled1.prijavljen)}">
+            <h2 style="text-align: center; margin: 0 auto;">Prijava korisnika</h2>
+            <br/>
+            <div class="prijavaLabelaInput">
+                <p:outputLabel class="labela" for="prijavaKorime" value="Korisničko ime: "/>
+                <p:inputText class="labelaInput" id="prijavaKorime" label="prijavaKorime" value="#{pogled1.uneseniKorisnik}"/>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="prijavaLabelaInput">
+                <p:outputLabel class="labela" for="prijavaLozinka" value="Lozinka: "/>
+                <p:inputText class="labelaInput" id="prijavaLozinka" label="prijavaLozinka" value="#{pogled1.unesenaLozinka}" type="password"/>
+            </div>
+            <br/>
+            <p:commandButton class="gumb" value=" Prijavi se " 
+                             action="#{pogled1.prijaviKorisnika()}" type="submit" ajax="false"/>
+        </h:form>
+        <br/>
+        <h:form id="registracijaKorisnika" class="obrazacMali" rendered="#{not(pogled1.prijavljen)}">
+            <h2 style="text-align: center; margin: 0 auto;">Registracija korisnika</h2>
+            <br/>
+            <div class="registracijaLabelaInput">
+                <p:outputLabel class="labela" for="registracijaKorime" value="Korisničko ime: "/>
+                <p:inputText class="labelaInput" id="registracijaKorime" label="registracijaKorime" 
+                             value="#{pogled1.korisnikRegistracija}"/>
+            </div>
+            <br/>
+            <div class="registracijaLabelaInput">
+                <p:outputLabel class="labela" for="registracijaIme" value="Ime: "/>
+                <p:inputText class="labelaInput" id="registracijaIme" label="registracijaIme" 
+                             value="#{pogled1.imeRegistracija}"/>
+            </div>
+            <br/>
+            <div class="registracijaLabelaInput">
+                <p:outputLabel class="labela" for="registracijaPrezime" value="Prezime: "/>
+                <p:inputText class="labelaInput" id="registracijaPrezime" label="registracijaPrezime" 
+                             value="#{pogled1.prezimeRegistracija}"/>
+            </div>
+            <br/>
+            <div class="registracijaLabelaInput">
+                <p:outputLabel class="labela" for="registracijaLozinka" value="Lozinka: "/>
+                <p:inputText class="labelaInput" id="registracijaLozinka" label="registracijaLozinka" 
+                             value="#{pogled1.lozinkaRegistracija}" type="password"/>
+            </div>
+            <br/>
+            <div class="registracijaLabelaInput">
+                <p:outputLabel class="labela" for="registracijaEmail" value="Email adresa: "/>
+                <p:inputText class="labelaInput" id="registracijaEmail" label="registracijaEmail" 
+                             value="#{pogled1.emailAdresaRegistracija}"/>
+            </div>
+            <br/>
+            <p:commandButton class="gumb" value=" Registriraj se " 
+                             action="#{pogled1.registrirajKorisnika()}" type="submit" ajax="false"
+                             update=":popisKorisnika :registracijaKorime :registracijaIme :registracijaPrezime :registracijaLozinka :registracijaEmail"/>
+        </h:form>
+        <br/>
+        <h:form id="popisKorisnika" class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">Popis svih korisnika</h2>
+            <br/>
+            <div>
+                <p:dataTable id="podaciPreuzimanja" value="#{pogled1.popisKorisnika}" var="korisnici" 
+                             rows="5" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,30,100"
+                             style="margin: 10px 20px">
+                    <p:column>
+                        <f:facet name="header">Ime</f:facet>#{korisnici.ime}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Prezime</f:facet>#{korisnici.prezime}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Korisničko ime</f:facet>#{korisnici.korIme}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">E-mail adresa</f:facet>#{korisnici.emailAdresa}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Datum kreiranja</f:facet>#{korisnici.datumKreiranja}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Datum promjene</f:facet>#{korisnici.datumPromjene}
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+        <br/>
+        <h:form class="obrazacMali" rendered="#{pogled1.prijavljen}">
+            <h2 style="text-align: center; margin: 0 auto;">Odjava korisnika</h2>
+            <br/>
+            <div class="prijavaLabelaInput">
+                <p:outputLabel rendered="#{pogled1.prijavljen}" value="Prijavljeni korisnik: #{pogled1.korisnik}"/>
+            </div>
+            <br/>
+            <p:commandButton rendered="#{pogled1.prijavljen}" value=" Odjavi se " action="#{pogled1.odjaviKorisnika()}" 
+                             update=":prijavaKorisnika :registracijaKorisnika" ajax="false"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

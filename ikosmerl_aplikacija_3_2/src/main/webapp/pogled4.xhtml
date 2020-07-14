@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 4</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 3 - Pogled 4</h1>
+        <br/>
+        <h:form class="obrazacPopis">
+            <h2 style="text-align: center; margin: 0 auto;">Pregled dnevnika korisnika #{pogled1.korisnik}</h2>
+            <br/>
+            <div>
+                <p:dataTable id="podaciPreuzimanja" value="#{pogled4.popuniListuDnevnika()}" var="podatakDnevnika" 
+                             rows="5" paginator="true" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="#{pogled4.brojLinijaPoStranici}"
+                             style="margin: 10px 20px">
+                    <p:column>
+                        <f:facet name="header">Komanda</f:facet>#{podatakDnevnika.komanda}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Vrijeme zapisa</f:facet>#{podatakDnevnika.vrijemeZapisa}
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./predlozak.xhtml">
+    <ui:define name="naslov">Pogled 2</ui:define>
+    <ui:define name="content">
+        <h1 class="naslov">Aplikacija 3 - Pogled 2</h1>
+        <h:form class="obrazacPopis">
+            <p:outputLabel id="prikazStatusPosluzitelja" class="labela" 
+                           value="Status poslužitelja: #{pogled2.stanjePosluzitelja}"/>
+            <br/>
+            <h2 style="text-align: center; margin: 0 auto;">Komande poslužitelja</h2>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Daj status poslužitelja " 
+                             action="#{pogled2.dajStatusPosluzitelja()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStatusPosluzitelja"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Pauziraj preuzimanje " 
+                             action="#{pogled2.izvrsiPauzuPreuzimanja()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStatusPosluzitelja"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Nastavi preuzimanje " 
+                             action="#{pogled2.izvrsiNastaviPreuzimanje()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStatusPosluzitelja"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Završi preuzimanje " 
+                             action="#{pogled2.izvrsiKrajPreuzimanja()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStatusPosluzitelja"/>
+        </h:form>
+        <h:form class="obrazacPopis">
+            <p:outputLabel id="prikazStanjeGrupe" class="labela" 
+                           value="Stanje grupe: #{pogled2.stanjeGrupe}"/>
+            <br/>
+            <h2 style="text-align: center; margin: 0 auto;">Komande grupe</h2>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Daj stanje grupe " 
+                             action="#{pogled2.dajStanjeGrupe()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStanjeGrupe"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Registriraj grupu " 
+                             action="#{pogled2.registrirajGrupu()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStanjeGrupe"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Odjavi grupu " 
+                             action="#{pogled2.odjaviGrupu()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStanjeGrupe"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Aktiviraj grupu " 
+                             action="#{pogled2.aktivirajGrupu()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStanjeGrupe"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Blokiraj grupu " 
+                             action="#{pogled2.blokirajGrupu()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStanjeGrupe"/>
+            <br/>
+            <p:outputLabel class="labela" for="icaoAerodroma" value="Icao aerodroma: "/>
+            <p:inputText class="labelaInput" id="icaoAerodroma" label="icaoAerodroma" 
+                         value="#{pogled2.uneseniIcao}"/>
+            <br/>
+            <p:outputLabel class="labela" value="*Prvo dodati unesene aerodrome u listu, tek nakon toga postaviti"/>
+            <br/>
+            <p:commandButton class="gumbUpravljac" value=" Dodaj unesene aerodrome u listu " 
+                             action="#{pogled2.dodajAerodromGrupe()}"/>
+            &nbsp;&nbsp;
+            <p:commandButton class="gumbUpravljac" value=" Postavi nove aerodrome grupe " 
+                             action="#{pogled2.postaviNoveAerodromeGrupe()}"
+                             update=":odgovorPosluzitelja:odgovor prikazStanjeGrupe"/>
+            <br/>
+        </h:form>
+        <h:form id="odgovorPosluzitelja" class="obrazacPopis">
+            <p:outputLabel id="odgovor" class="labela" 
+                           value="Odgovor poslužitelja nakon izvršavanja komande: #{pogled2.prikazOdgovor}"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

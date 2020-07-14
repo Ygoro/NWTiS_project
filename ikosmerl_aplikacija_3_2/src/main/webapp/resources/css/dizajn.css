@@ -1,0 +1,86 @@
+.authorTable{   
+    border-collapse:collapse;
+    border-bottom:1px solid #000000;
+    border-left:1px solid #000000;
+    border-right:1px solid #000000;
+}
+
+.authorTableHeader{
+    text-align:center;
+    background:none repeat scroll 0 0 #B5B5B5;
+    border-bottom:1px solid #000000;
+    border-top:1px solid #000000;
+    padding:2px;
+}
+
+.authorTableOddRow{
+    text-align:center;
+    background:none repeat scroll 0 0 #FFFFFF;	
+}
+
+.authorTableEvenRow{
+    text-align:center;
+    background:none repeat scroll 0 0 #D3D3D3;
+}
+
+.nazivSadrzaja {
+    display: block;
+    font-size: large;
+}
+
+.naslov {
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.labela {
+    font-weight: bold;
+    text-align: left;
+}
+
+.labelaInput {
+    margin: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    vertical-align: middle;
+}
+
+.obrazacMali {
+    width: 200px;
+    margin: 20px auto;
+    padding: 20px 50px;
+    background-color: #c9c8c3;
+    color: #000;
+    text-align: center;
+}
+
+.obrazacPopis {
+    margin: 20px 20px;
+    padding: 10px 50px;
+    background-color: #c9c8c3;
+    color: #000;
+    text-align: center;
+}
+
+.gumb {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5px 30px;
+    background-color: #FFF;
+    border: 1px solid;
+    color: #45404f;
+}
+
+.gumbUpravljac {
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px 30px;
+    background-color: #FFF;
+    border: 1px solid;
+    color: #45404f;
+}
